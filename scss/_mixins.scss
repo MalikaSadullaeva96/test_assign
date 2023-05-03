@@ -1,0 +1,29 @@
+@mixin margin($top: 0px) {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: $top;
+}
+
+@mixin display-flex($location: flex-start, $direction: row, $gap: 0px, $flex-wrap: nowrap, $margin-left: 0px, $margin-right: 0px, $margin-top:0px, $margin-bottom:0px) {
+  justify-content: $location;
+  flex-direction: $direction;
+  display: flex;
+  gap: $gap;
+  flex-wrap: $flex-wrap;
+  margin-left: $margin-left;
+  margin-right: $margin-right;
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
+  
+}
+
+@mixin button-style($border: 1px solid $dark, $color: $dark,  $padding-right: 10px, $padding-left: 10px, $padding-top: 3px, $padding-bottom: 3px, $margin: 0px) {
+  border: $border;
+  color: $color;
+  padding-left: $padding-left;
+  padding-right: $padding-right;
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+  margin: $margin;
+  font-size: 13px;
+}

@@ -1,0 +1,29 @@
+@import 'variables';
+@import 'mixins';
+
+.main-add {
+  @include margin;
+  
+  &__form {
+    @include display-flex($direction: column);
+  }
+
+  &__product,
+  &__type {
+    padding-top: 15px;
+    @include display-flex;
+  }
+
+  &__label {
+    width: 90px;
+  }
+
+}
+
+.main-add__switcher {
+    padding-top: 50px;
+}
+
+.switch__label {
+    padding-right: 20px;
+}

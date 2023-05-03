@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/styles.css">
+   <title>Document</title>
+</head>
+<body>
+   <!-- nav section -->
+   <header class="header">
+       <h3 class="header__logo">
+           Product Add
+       </h3>
+       <div class="header__buttons">
+           <div class="header__add">
+            <input type="submit" 
+                   name="submit" 
+                   form="product_form" 
+                   value="Save" 
+                   class="header__save"/>
+           </div>
+         <a href="products.html" id="delete-product-btn">
+           <div class="header__delete">
+               Cancel
+           </div>
+         </a>
+       </div>
+   </header>
+   <!-- main -->
+   <main class="main-add">
+<form action="./php/index.php"
+      method="POST" 
+      class="main-add__forms"  
+      id="product_form">
+    <div class="main-add__form">
+        <div class="main-add__product">
+            <label class="main-add__label" for="sku">SKU</label>
+            <input type="text" class="main-add__input" id="sku" name="sku" required>
+            <span class="main-add__sku-error-msg" style="display:none; color:red;"></span>
+        </div>
+        <div class="main-add__product">
+            <label class="main-add__label" for="name">Name</label>
+            <input type="text" class="main-add__input" id="name" name="name" required>
+        </div>
+        <div class="main-add__product">
+            <label class="main-add__label" for="price">Price ($)</label>
+            <input type="number" class="main-add__input" id="price" name="price" required>
+        </div>
+    </div>
+    <div class="switch main-add__switcher">
+        <label for="productType" class="switch__label">Type Switcher</label>
+        <select id="productType" name="productType" class="switch__type">
+            <option value="" disabled selected>Type Switcher</option>
+            <option value="DVD">DVD</option>
+            <option value="Book">Book</option>
+            <option value="Furniture">Furniture</option>
+        </select>
+    </div>
+
+    <div class="main-add__option"></div>
+</form>
+   </main>
+   <footer class="footer">
+       <div class="footer__container">
+           <p class="footer__info">
+               Scandiweb Test assignment
+           </p>
+       </div>
+   </footer>
+   <script type="module" src="./js/producstAddController.js"></script>
+</body>
+</html>

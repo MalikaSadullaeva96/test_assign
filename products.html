@@ -1,0 +1,46 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Document</title>
+ </head>
+ <body>
+    <!-- nav section -->
+    <header class="header">
+        <h3 class="header__logo">
+            Product List
+        </h3>
+        <div class="header__buttons">
+          <a href="product_add.html">
+            <div class="header__add">
+                ADD
+            </div>
+          </a>
+          <div id="delete-product-btn">
+            <div class="header__delete">
+                <input type="submit" 
+                       name="submit"
+                       value="MASS DELETE" 
+                       class="header__save"/>
+               </div>
+        </div>
+        </div>
+    </header>
+    <!-- main -->
+    <main class="main">
+        <div class="main__products">
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__info">
+                Scandiweb Test assignment
+            </p>
+        </div>
+    </footer>
+    <script type="module" src="./js/productController.js"></script>
+ </body>
+ </html>
