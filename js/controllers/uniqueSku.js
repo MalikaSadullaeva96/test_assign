@@ -1,3 +1,4 @@
+import isInteger from './validateInt.js';
 function uniqueSku() {
     console.log('Function');
     const form = document.querySelector('#product_form');
@@ -10,17 +11,26 @@ function uniqueSku() {
         const skuInput = document.querySelector('#sku');
         const errorMsg = document.querySelector('.main-add__sku-error-msg');
         const errorMsgInp = document.querySelector('.main-add__sku-error-msg-req');
+        const price = document.querySelector('.main-add__price-error-msg');
         const productTypeSelect = document.querySelector('#productType');
         const selectedValue = productTypeSelect.value;
 
         const requiredInputs = form.querySelectorAll('input[required]');
         let formValid = true;
         requiredInputs.forEach(input => {
-            if (!input.checkValidity()) {
+            if ((!input.checkValidity()) ||
+                ((input.id !== 'sku' && input.id !== 'name') && (input.type === 'text' && !isInteger(input.value)))) {
                 input.style.border = '1px solid red';
                 formValid = false;
+                if(input.id === 'price') {
+                    price.innerHTML = '&nbsp;Please, provide the data of indicated type';
+                    price.style.display = 'block';
+                }
             } else {
                 input.style.border = '';
+                if(input.id === 'price') {
+                    price.style.display = 'none';
+                }
             }
         });
         if (selectedValue === '') {

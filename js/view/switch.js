@@ -14,14 +14,14 @@ console.log('JavaScript file loaded');
     console.log('switchOption triggered');
     switch(productType.value) {
       case 'DVD':
-        elements = createInputLabelPair('size', 'Size (MB)', 'number');
+        elements = createInputLabelPair('size', 'Size (MB)', 'text');
         const dvdDiv = createDiv('main-add__type', elements.label, elements.input);
         const paragraph = createP('Please, provide size of indicated type');
         option.append(dvdDiv);
         option.append(paragraph);
         break;
       case 'Book':
-        elements = createInputLabelPair('weight', 'Weight (Kg)', 'number');
+        elements = createInputLabelPair('weight', 'Weight (Kg)', 'text');
         const bookDiv = createDiv('main-add__type', elements.label, elements.input);
         const parag = createP('Please, provide weight of indicated type');
         option.append(bookDiv);
@@ -29,9 +29,9 @@ console.log('JavaScript file loaded');
         console.log('Book selected:', elements); 
         break;  
       case 'Furniture':
-        const height = createInputLabelPair('height', 'Height (CM)', 'number');
-        const width = createInputLabelPair('width', 'Width (CM)', 'number');
-        const length = createInputLabelPair('length', 'Length (CM)', 'number');
+        const height = createInputLabelPair('height', 'Height (CM)', 'text');
+        const width = createInputLabelPair('width', 'Width (CM)', 'text');
+        const length = createInputLabelPair('length', 'Length (CM)', 'text');
         const heightDiv = createDiv('main-add__type', height.label, height.input);
         const widthDiv = createDiv('main-add__type', width.label, width.input);
         const lengthDiv = createDiv('main-add__type', length.label, length.input);
