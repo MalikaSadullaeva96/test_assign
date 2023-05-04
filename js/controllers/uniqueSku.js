@@ -44,8 +44,6 @@ function uniqueSku() {
         })
             .then(response => response.json())
             .then(result => {
-                console.log('---->Result:'+ result);
-                console.log('result status ' + result["status"]);
                 if (result === ('{"status":"error","message":"SKU Already exist"}')) {
                     skuInput.style.border = '1px solid red';
                     errorMsg.innerHTML = '&nbsp;Please enter a unique SKU.';
