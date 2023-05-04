@@ -30,7 +30,7 @@ function uniqueSku() {
             productTypeSelect.style.border = '';
         }
         if (!formValid) {
-            errorMsgInp.innerHTML = 'Please indicate all required fields';
+            errorMsgInp.innerHTML = 'Please, submit required data';
             errorMsgInp.style.display = 'block';
             errorMsgInp.style.color = 'red';
         } else {
