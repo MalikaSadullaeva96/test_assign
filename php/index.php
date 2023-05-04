@@ -22,26 +22,35 @@ $routes = [
 
 
 
-if (isset($routes[$method])) {
+if (isset($routes[$method])) 
+{
     $route = $routes[$method];
     $data = $_REQUEST;
-    if (empty($data)) {
+    if (empty($data)) 
+    {
         $data = file_get_contents("php://input");
     }
     $response = call_user_func(["ProductController", $route["method"]], $data);
-    if ($route["redirect"]) {
-        if ($response["status"] === "success") {
+    if ($route["redirect"]) 
+    {
+        if ($response["status"] === "success") 
+        {
             header("Location: ../products.html");
             die();
-        } else {
+        } 
+        else {
             echo json_encode($response);
             die();
         }
-    } else {
+    } 
+    else 
+    {
         echo json_encode($response);
         die();
     }
-} else {
+} 
+else 
+{
     return "Method Error!";
 }
 

@@ -1,9 +1,5 @@
 <?php
 
-//include_once "../models/dvd.php";
-//require_once "../models/book.php";
-//require_once "../models/furniture.php";
-
 include_once(__DIR__ . "/../models/dvd.php");
 include_once(__DIR__ . "/../models/book.php");
 include_once(__DIR__ . "/../models/furniture.php");
@@ -12,7 +8,7 @@ class ProductController
 {
     public static function index()
     {
-        // return Product::GetAll();
+        
         $products = Product::GetAll();
         return $products;
     }
@@ -48,7 +44,7 @@ class ProductController
             return ["status" => "error"];
         }
 
-        // return $product->Save();
+        
         $response = $product->Save();
         return $response;
     }

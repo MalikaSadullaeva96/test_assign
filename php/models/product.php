@@ -38,7 +38,8 @@ abstract class Product
         return $count == 0;
     }
 
-    public static function GetAll(){
+    public static function GetAll()
+    {
         $db = new Database();
         $conn = $db->conn;
 
@@ -51,7 +52,6 @@ abstract class Product
         $stmt->close();
         $db->conn->close();
 
-        //return json_encode($products);
         return $products;
     }
 
@@ -80,7 +80,6 @@ abstract class Product
             $response["message"] = "SKU Already exist";
         }
          return json_encode($response);
-        // return $response;
     }
 
 
@@ -93,7 +92,8 @@ abstract class Product
 
         $placeholders = implode(',', array_fill(0, count($skus), '?'));
         $query = $conn->prepare("DELETE FROM items WHERE sku IN ($placeholders)");
-        if ($query === false) {
+        if ($query === false) 
+        {
             error_log("Error preparing the query: " . implode(" ", $conn->errorInfo()));
             echo 'error: Error preparing the query';
             return;
@@ -103,7 +103,8 @@ abstract class Product
         $query->bind_param($params, ...$skus);
 
         $result = $query->execute();
-        if ($result === false) {
+        if ($result === false) 
+        {
             error_log("Error executing the query: " . $query->error);
             echo 'error: Error executing the query';
             return;
