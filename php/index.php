@@ -24,7 +24,6 @@ $routes = [
 
 if (isset($routes[$method])) {
     $route = $routes[$method];
-
     $data = $_REQUEST;
     if (empty($data)) {
         $data = file_get_contents("php://input");
