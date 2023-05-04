@@ -12,7 +12,7 @@ function loadProducts() {
 
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
-                checkbox.dataset.sku = product.sku; //test
+                checkbox.dataset.sku = product.sku; 
                 checkbox.className = "product__checkbox delete-checkbox";
                 productDiv.appendChild(checkbox);
 
