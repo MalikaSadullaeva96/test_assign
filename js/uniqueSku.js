@@ -10,23 +10,33 @@ function uniqueSku() {
         const skuInput = document.querySelector('#sku');
         const errorMsg = document.querySelector('.main-add__sku-error-msg');
         const errorMsgInp = document.querySelector('.main-add__sku-error-msg-req');
+        const productTypeSelect = document.querySelector('#productType');
+        const selectedValue = productTypeSelect.value;
 
-        //test
         const requiredInputs = form.querySelectorAll('input[required]');
         let formValid = true;
         requiredInputs.forEach(input => {
             if (!input.checkValidity()) {
                 input.style.border = '1px solid red';
                 formValid = false;
-                errorMsgInp.innerHTML = 'Please indicate all required fields';
-                errorMsgInp.style.display = 'block';
-                errorMsgInp.style.color = 'red';
             } else {
                 input.style.border = '';
-                errorMsgInp.style.display = 'none';
             }
         });
-        //end
+        if (selectedValue === '') {
+            productTypeSelect.style.border = '1px solid red';
+            formValid = false;
+        } else {
+            productTypeSelect.style.border = '';
+        }
+        if (!formValid) {
+            errorMsgInp.innerHTML = 'Please indicate all required fields';
+            errorMsgInp.style.display = 'block';
+            errorMsgInp.style.color = 'red';
+        } else {
+            errorMsgInp.style.display = 'none';
+        }
+
    if(formValid){
         fetch('./php/index.php', {
             method: 'POST',
