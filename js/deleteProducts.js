@@ -12,26 +12,29 @@ function removeProducts() {
   }
   
   function deleteProductsFromServer(skuList) {
-    fetch('./php/insert.php', {
-      method: 'POST',
-      body: formData,
+    fetch('./php/index.php', {
+      method: 'DELETE',
+      body: skuList,
     })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.status === 'error' && result.message === 'SKU Already exist') {
-          console.log('inside if');
-          skuInput.style.border = '1px solid red';
-          errorMsg.innerHTML = ' Please enter a unique SKU.';
-          errorMsg.style.display = 'inline';
-        } else if (result.status === 'success') {
-          console.log('inside else');
-          window.location.href = '../scandiweb/products.html';
+      .then(response => {
+        console.log('Raw server response:', response);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(data => {
+        data = data.replace('null', '');
+        console.log('Response data:', data);
+        if (data === 'success') {
+          console.log('Products delpaeted successfully.');
+          window.location.reload();
         } else {
-          console.error('Error:', result.message);
+          console.error('Error deleting products:', data);
         }
       })
-      .catch((error) => {
-        console.error('Error:', error);
+      .catch(error => {
+        console.error('Error deleting products:', error);
       });
   }
 

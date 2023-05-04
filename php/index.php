@@ -21,25 +21,6 @@ $routes = [
 ];
 
 
-// if (isset($routes[$method])) {
-//     $route = $routes[$method];
-
-//     $data = $_REQUEST;
-//     if (empty($data)) {
-//         $data = file_get_contents("php://input");
-//     }
-//     $response = call_user_func(["ProductController", $route["method"]], $data);
-    
-//     if ($route["redirect"]) {
-//         //header('Location:' . $_SERVER["HTTP_ORIGIN"] . '/products.html');
-//        header("Location: ../products.html");
-//         die();
-//     } else {
-//         echo $response;
-//     }
-// } else {
-//     return "Method Error!";
-// }
 
 if (isset($routes[$method])) {
     $route = $routes[$method];
@@ -49,7 +30,6 @@ if (isset($routes[$method])) {
         $data = file_get_contents("php://input");
     }
     $response = call_user_func(["ProductController", $route["method"]], $data);
-   //var_dump($response["status"]);
     if ($route["redirect"]) {
         if ($response["status"] === "success") {
             header("Location: ../products.html");
@@ -60,6 +40,7 @@ if (isset($routes[$method])) {
         }
     } else {
         echo json_encode($response);
+        die();
     }
 } else {
     return "Method Error!";

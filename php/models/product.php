@@ -79,8 +79,8 @@ abstract class Product
             $response["status"] = "error";
             $response["message"] = "SKU Already exist";
         }
-        // return json_encode($response);
-        return $response;
+         return json_encode($response);
+        // return $response;
     }
 
 
