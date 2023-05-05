@@ -35,7 +35,7 @@ if (isset($routes[$method]))
     {
         if ($response["status"] === "success") 
         {
-            header("Location: ../products.html");
+            header("Location: ../index.html");
             die();
         } 
         else {

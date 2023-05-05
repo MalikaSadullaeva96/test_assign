@@ -59,7 +59,7 @@ function uniqueSku() {
                     errorMsg.innerHTML = '&nbsp;Please enter a unique SKU.';
                     errorMsg.style.display = 'inline';
                 } else if (result=== '{"status":"success","message":"New record created successfully"}') {
-                    window.location.href = '../scandiweb/products.html';
+                    window.location.href = '../scandiweb/index.html';
                 } else {
                     console.error('Error:', result.message);
                 }
