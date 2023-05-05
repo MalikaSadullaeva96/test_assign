@@ -87,9 +87,10 @@ abstract class Product
     {
         $db = new Database();
         $conn = $db->conn;
-    
         $placeholders = implode(',', array_fill(0, count($skus), '?'));
         $query = $conn->prepare("DELETE FROM items WHERE sku IN ($placeholders)");
+
+
         if ($query === false) {
             error_log("Error preparing the query: " . implode(" ", $conn->errorInfo()));
             return ["status" => "error", "message" => "Error preparing the query"];
@@ -103,7 +104,6 @@ abstract class Product
             error_log("Error executing the query: " . $query->error);
             return ["status" => "error", "message" => "Error executing the query"];
         }
-    
         $affectedRows = $query->affected_rows;
         if ($affectedRows > 0) {
             return ["status" => "success", "message" => "Deleted $affectedRows rows."];

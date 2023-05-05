@@ -51,15 +51,7 @@ class ProductController
 
     public static function delete($ids)
     {
-        if (is_string($ids)) {
-            $skuList = json_decode($ids, true);
-        } elseif (is_array($ids)) {
-            $skuList = $ids;
-        } else {
-            return ["status" => "error", "message" => "Invalid input"];
-        }
-        
-        $result = Product::DeleteProducts($skuList);
+        $result = Product::DeleteProducts(explode(',', $ids['skuList']));
         if ($result['status'] === 'success') {
             return ["status" => "success"];
         } else {
@@ -67,21 +59,14 @@ class ProductController
         }
     }
 
+
     public static function handlePost($data)
     {
         if (isset($data['action'])) {
             if ($data['action'] === 'add') {
                 return self::add($data);
-            } elseif ($data['action'] === 'delete') {
-                if (isset($data['skuList'])) {
-                    return self::delete($data['skuList']);
-                } else {
-                    return [
-                        "status" => "error",
-                        "message" => "Missing SKU list"
-                    ];
-                }
-            } else {
+            } 
+            else {
                 return [
                     "status" => "error",
                     "message" => "Invalid action"

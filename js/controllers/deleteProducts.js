@@ -15,6 +15,7 @@ function removeProducts() {
     const formData = new FormData();
     formData.append('action', 'delete');
     formData.append('skuList', skuList);
+    
     fetch('./php/index.php', {
       method: 'POST',
       body: formData,
@@ -31,7 +32,7 @@ function removeProducts() {
         console.log('Response data:', responseData);
         if (responseData.status === 'success') {
           console.log('Products delpaeted successfully.');
-         window.location.reload();
+          window.location.reload();
         } else {
           console.error('Error deleting products:',responseData);
         }
