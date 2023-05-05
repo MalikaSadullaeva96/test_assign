@@ -12,9 +12,12 @@ function removeProducts() {
   }
   
   function deleteProductsFromServer(skuList) {
+    const formData = new FormData();
+    formData.append('action', 'delete');
+    formData.append('skuList', skuList);
     fetch('./php/index.php', {
-      method: 'DELETE',
-      body: skuList,
+      method: 'POST',
+      body: formData,
     })
       .then(response => {
         console.log('Raw server response:', response);
@@ -24,13 +27,13 @@ function removeProducts() {
         return response.text();
       })
       .then(data => {
-        data = data.replace('null', '');
-        console.log('Response data:', data);
-        if (data === 'success') {
+        let responseData = JSON.parse(data);
+        console.log('Response data:', responseData);
+        if (responseData.status === 'success') {
           console.log('Products delpaeted successfully.');
-          window.location.reload();
+         window.location.reload();
         } else {
-          console.error('Error deleting products:', data);
+          console.error('Error deleting products:',responseData);
         }
       })
       .catch(error => {

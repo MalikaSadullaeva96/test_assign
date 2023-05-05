@@ -48,6 +48,7 @@ function uniqueSku() {
         }
 
    if(formValid){
+        formData.append('action', 'add');
         fetch('./php/index.php', {
             method: 'POST',
             body: formData

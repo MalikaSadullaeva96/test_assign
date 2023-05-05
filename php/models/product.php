@@ -85,32 +85,32 @@ abstract class Product
 
     public static function DeleteProducts($skus)
     {
-        error_log("SKU List: " . print_r($skus, true));
-
         $db = new Database();
         $conn = $db->conn;
-
+    
         $placeholders = implode(',', array_fill(0, count($skus), '?'));
         $query = $conn->prepare("DELETE FROM items WHERE sku IN ($placeholders)");
-        if ($query === false) 
-        {
+        if ($query === false) {
             error_log("Error preparing the query: " . implode(" ", $conn->errorInfo()));
-            echo 'error: Error preparing the query';
-            return;
+            return ["status" => "error", "message" => "Error preparing the query"];
         }
-
+    
         $params = str_repeat("s", count($skus));
-        $query->bind_param($params, ...$skus);
-
+        $query->bind_param($params, ...array_values($skus));
+    
         $result = $query->execute();
-        if ($result === false) 
-        {
+        if ($result === false) {
             error_log("Error executing the query: " . $query->error);
-            echo 'error: Error executing the query';
-            return;
+            return ["status" => "error", "message" => "Error executing the query"];
         }
-        echo 'success';
+    
+        $affectedRows = $query->affected_rows;
+        if ($affectedRows > 0) {
+            return ["status" => "success", "message" => "Deleted $affectedRows rows."];
+        } else {
+            return ["status" => "warning", "message" => "No rows were deleted."];
+        }
     }
-
+    
     abstract public function getExtraColumns();
 }
